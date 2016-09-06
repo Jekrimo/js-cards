@@ -31,14 +31,6 @@ function CardDeck(){
     this.cards = [];
   }
 }
-var ourCards = new CardDeck()
-ourCards.newdeck();
-ourCards.shuffle();
-// ourCards.reset();
-var i =[];
-i.push(ourCards.dealcard())
-console.log(i)
-
 
 //player constructor
 
@@ -49,10 +41,22 @@ function Player(name, PlayerDeck){
     var newcard = PlayerDeck.dealcard();
     this.hand.push(newcard);
   }
+  this.discard = function discard(i){
+    this.hand.pop(this.hand[i]);
+  }
 }
+
+//Game
+
+var ourCards = new CardDeck()
+ourCards.newdeck();
+ourCards.shuffle();
 
 var Jeff = new Player("Jeff", ourCards)
 Jeff.takecard();
+Jeff.takecard();
+Jeff.takecard();
+Jeff.discard();
 Jeff.takecard();
 Jeff.takecard();
 console.log(Jeff.hand)
