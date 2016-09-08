@@ -4,32 +4,34 @@
 // Player object
 
 function CardDeck(){
-  this.cards = [];
-  this.ranks = ["A of", "2 of", "3 of", "4 of", "5 of", "6 of", "7 of", "8 of", "9 of", "10 of", "J of", "Q of", "K of"]
-  this.suit = [" Clubs", " Dimonds", " Hearts", " Spades"]
+  this.ranks = ["ace_of", "2_of", "3_of", "4_of", "5_of", "6_of", "7_of", "8_of", "9_of", "10_of", "jack_of", "queen_of", "king_of"]
+  this.suit = ["_clubs", "_diamonds", "_hearts", "_spades"]
   this.newdeck = function newdeck(){
+      var cards = [];
       for(var i=0; i < this.suit.length; i++){
         for(var j=0; j < this.ranks.length; j++){
-         this.cards.push(this.ranks[j] + this.suit[i]);
+         cards.push(this.ranks[j] + this.suit[i]);
+         return cards;
         }
       }
   }
-  this.shuffle = function shuffle(){
-    for (var i =0; i<this.cards.length; i++){
-      var j= Math.floor(Math.random() * this.cards.length);
-      var temp= this.cards[i];
-      this.cards[i]=this.cards[j];
-      this.cards[j] = temp;
+  this.shuffle = function shuffle(newdeck){
+    for (var i =0; i< this.newdeck.length; i++){
+      var j= Math.floor(Math.random() * this.newdeck.length);
+      var temp= this.newdeck[i];
+      this.newdeck[i]=this.newdeck[j];
+      this.newdeck[j] = temp;
     }
   }
   this.dealcard = function deal(){
-    var i = Math.floor(Math.random() * this.cards.length);
-    singleCard = this.cards.pop(this.cards[i]);
+    var i = Math.floor(Math.random() * this.newdeck.length);
+    singleCard = this.newdeck.pop(this.newdeck[i]);
     return singleCard;
   }
   this.reset = function reset(){
-    this.cards = [];
+    this.newdeck = [];
   }
+  return this;
 }
 
 //player constructor
@@ -44,19 +46,17 @@ function Player(name, PlayerDeck){
   this.discard = function discard(i){
     this.hand.pop(this.hand[i]);
   }
+  return Player;
 }
 
 //Game
 
-var ourCards = new CardDeck()
-ourCards.newdeck();
-ourCards.shuffle();
+// var ourCards = new CardDeck()
+// ourCards.newdeck();
+// ourCards.shuffle();
 
-var Jeff = new Player("Jeff", ourCards)
-Jeff.takecard();
-Jeff.takecard();
-Jeff.takecard();
-Jeff.discard();
-Jeff.takecard();
-Jeff.takecard();
-console.log(Jeff.hand)
+// var Jeff = new Player("Jeff", ourCards)
+
+//
+// console.log(Jeff.hand)
+// ---------------------jquery start------------------------------

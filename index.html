@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Make my day</title>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src= "cards.js"></script>
+    <script type="text/javascript">
+
+
+    $(document).ready(function(){
+      CardDeck.newdeck;
+      console.log(CardDeck.newdeck);
+      CardDeck.shuffle;
+      var cardstr = "";
+      $("#button").click(function(){
+        CardDeck.newdeck;
+        CardDeck.shuffle;
+        Player.takecard;
+        console.log(Player.takecard)
+        cardstr += "<img src = 'img/" + Player.hand + ".png'>";
+        console.log(cardstr)
+        // for(var i=0; i<)
+        $("#playerHand").append(cardstr);
+      })
+    })
+    </script>
+  </head>
+  <body>
+    <button id="button" type="button" name="button">Take a card!</button>
+    <div id= "playerHand"></div>
+  </body>
+</html>
