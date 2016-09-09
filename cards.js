@@ -31,7 +31,7 @@ function CardDeck(){
   this.reset = function reset(){
     this.newdeck = [];
   }
-  return this;
+  return CardDeck;
 }
 
 //player constructor
