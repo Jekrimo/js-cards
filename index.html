@@ -18,11 +18,8 @@
         player.takeCard();
         for(var j=0; j<player.hand.length; j++){
         cardstr.push("<img src = 'img/" + player.hand[j] + ".png'>");
-        console.log(player.hand)
-        for(var i=0; i<cardstr.length; i++){
-            $('#playerHand').html(cardstr[i]);
-        }
       }
+      $('#playerHand').html(cardstr);
       })
     })
 
